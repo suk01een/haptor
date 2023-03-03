@@ -65,7 +65,7 @@ or
 
 
 ## Run custom configs (mounted volumes)
-```docker-compose run -v <your_torrc_absolute_path>:/etc/tor/torrc -v <your_haproxy_conf_absolute_path>:/usr/local/etc/haproxy/haproxy.cfg  haptor```
+```docker-compose run -v <your_torrc_absolute_path>:/etc/tor/torrc haptor```
 
 *Please note the importance of specifying the absolute path when using mounted volumes with docker. Failing to do so results in failure to mount volumes. This issue is docker related.*
 
