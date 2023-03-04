@@ -91,7 +91,7 @@ echo "                    tor setup                     "
 echo "--------------------------------------------------"
 echo
 
-if ! mount | grep -F "${TOR_CONF}"; then
+if ! mount | grep -F "${TOR_CONF}" | grep -vF "${TOR_CONF_PREFIX}" > /dev/null; then
     echo "${TOR_CONF} is not mounted"
     echo > "${TOR_CONF}" # Clean file in case same container in ran more than once
     if [ -e "${TOR_CONF_PREFIX}" ]; then
@@ -117,7 +117,7 @@ echo "--------------------------------------------------"
 echo "                  haproxy setup                   "
 echo "--------------------------------------------------"
 echo
-if ! mount | grep -F "${HAPROXY_CONF}"; then
+if ! mount | grep -F "${HAPROXY_CONF}" > /dev/null; then
     echo "${HAPROXY_CONF} is not mounted"
     cp "${HAPROXY_CONF_TEMPLATE}" "${HAPROXY_CONF}"
     set_balancing_algorithm "${HAPROXY_CONF}" "${BALANCING_ALGORITHM}"
