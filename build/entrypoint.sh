@@ -93,6 +93,7 @@ echo
 
 if ! mount | grep -F "${TOR_CONF}"; then
     echo "${TOR_CONF} is not mounted"
+    echo > "${TOR_CONF}" # Clean file in case same container in ran more than once
     if [ -e "${TOR_CONF_PREFIX}" ]; then
         echo "${TOR_CONF_PREFIX} is mounted"
         cat "${TOR_CONF_PREFIX}" | grep -v ^RunAsDaemon > "${TOR_CONF}"
